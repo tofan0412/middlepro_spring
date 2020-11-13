@@ -1,6 +1,7 @@
 package middleproject.app.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -9,11 +10,12 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import middleproject.app.model.ApplicationVo;
 import middleproject.member.model.MemberVo;
 import middleproject.member.service.MemberServiceI;
-
 
 @RequestMapping("/app")
 @Controller
@@ -62,8 +64,57 @@ public class AppController {
 	}
 	
 	@RequestMapping("/insert")
-	public String isnert() {
+	public String isnert(ApplicationVo applicationVo) {
+		int result = memberService.insert(applicationVo);
 		
-		return "";
+		if (result > 0) return "tiles.app_main";
+		else return "tiles.app_write";
 	}
+	
+	@RequestMapping("/listView")
+	public String listView() {
+		return "tiles.app_listView";
+	}
+	
+	// HTML (JSP) 로 반환한다. 
+	@RequestMapping("/list")
+	public String list(String userid, Model model) {
+		List<ApplicationVo> result = memberService.list(userid);
+		
+		model.addAttribute("list", result);
+		return "app_listHTML";
+	}
+	
+	@RequestMapping("/updateView")
+	public String updateView(String ap_num, Model model) {
+		ApplicationVo result = memberService.updateView(ap_num);
+		
+		model.addAttribute("application", result);
+		return "app_updateView";
+	}
+	
+	@RequestMapping("/update")
+	public String update(ApplicationVo applicationVo) {
+		logger.debug("자기소개서 이름 : {}", applicationVo.getAp_title());
+		
+		int result = memberService.update(applicationVo);
+		
+		if (result > 0) return "tiles.app_list";
+		else return "tiles.app_main";
+	}
+	
+	@RequestMapping("/deleteView")
+	public String deleteView() {
+		return "tiles.app_deleteView";
+	}
+	
+	@RequestMapping("/deleteList")
+	public String deleteList(String userid, Model model) {
+		List<ApplicationVo> result = memberService.list(userid);
+		
+		model.addAttribute("list", result);
+		return "app_deleteListHTML";
+	}
+	
+	
 }

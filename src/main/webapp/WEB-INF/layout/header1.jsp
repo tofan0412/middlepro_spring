@@ -41,7 +41,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li id="mem"><a class="dropdown-toggle" id="menu"
 						data-toggle="dropdown" aria-expanded="false"><span
-							class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;${session_usernm }
+							class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;${session_id }
 							<span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="menu1">
 							<li><a

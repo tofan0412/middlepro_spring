@@ -10,55 +10,31 @@
 		   AND PASS = #{pass}
 	</select>
 	
-	<select id="getMember" parameterType="String"
-		resultType="MemberVo">
-		SELECT *
-		FROM users
-		WHERE USERID = #{userId}
-	</select>
-
-	<select id="getMemberAll" resultType="MemberVo">
-		SELECT *
-		FROM USERS
-	</select>
-
-	<select id="getMemberPage" resultType="MemberVo"
-		parameterType="map">
-		SELECT *
-		FROM (SELECT ROWNUM RN, A.*
-		FROM (SELECT *
-		FROM USERS
-		ORDER BY USERID) A)
-		WHERE RN BETWEEN (#{page} - 1) * #{pageSize} + 1 AND #{page} * #{pageSize}
-
-	</select>
-
-	<select id="selectMemberTotalCnt" resultType="int">
-		SELECT COUNT(*)
-		FROM USERS
-	</select>
-
-	<insert id="insertMember" parameterType="MemberVo">
-		insert into users values(#{userid}, #{usernm}, #{pass}, sysdate, #{alias},
-		#{addr1}, #{addr2}, #{zipcode}, #{filename}, #{realFilename})
+	<insert id="insert" parameterType="ApplicationVo">
+		INSERT INTO APPLICATION(AP_NUM, AP_NAME, AP_TITLE, AP_INTRODUCE, AP_MOTIVATION, AP_PLAN, AP_DATE, USERID)
+		VALUES(AP_SEQ.NEXTVAL, #{ap_name}, #{ap_title}, #{ap_introduce}, #{ap_motivation}, #{ap_plan}, SYSDATE, #{userid})
 	</insert>
 
-	<delete id="deleteMember" parameterType="String">
-		DELETE USERS
-		WHERE userid = #{userid}
-	</delete>
-
-	<update id="updateMember" parameterType="MemberVo">
-		update users
-		set USERNM = #{usernm},
-		pass = #{pass},
-		ALIAS = #{alias},
-		ADDR1 = #{addr1},
-		ADDR2 = #{addr2},
-		ZIPCODE = #{zipcode},
-		FILENAME = #{filename},
-		REALFILENAME = #{realFilename}
-		where userid = #{userid}
+	<select id="list" parameterType="String" resultType="ApplicationVo">
+		SELECT *
+		 FROM APPLICATION
+		WHERE USERID = #{userid}
+	</select>
+	
+	<select id="updateView" parameterType="String" resultType="ApplicationVo">
+		SELECT *
+		  FROM APPLICATION
+		 WHERE AP_NUM = #{ap_num}
+	</select>
+	
+	<update id="update" parameterType="ApplicationVo">
+		UPDATE APPLICATION
+		   SET AP_NAME = #{ap_name},
+		       AP_TITLE = #{ap_title},
+		       AP_INTRODUCE = #{ap_introduce},
+		       AP_MOTIVATION = #{ap_motivation},
+		       AP_PLAN = #{ap_plan}
+		 WHERE AP_NUM = #{ap_num}
 	</update>
 	
 </mapper>

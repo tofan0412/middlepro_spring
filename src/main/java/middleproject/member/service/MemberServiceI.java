@@ -3,21 +3,18 @@ package middleproject.member.service;
 import java.util.List;
 import java.util.Map;
 
+import middleproject.app.model.ApplicationVo;
 import middleproject.member.model.MemberVo;
 
 
 public interface MemberServiceI {
 	MemberVo login(Map<String, String> userInfo);
 	
-	MemberVo getMember(String userId);
+	int insert(ApplicationVo applicationVo);
 	
-	List<MemberVo> getMemberAll();
+	List<ApplicationVo> list(String userid);
 	
-	Map<String, Object> getMemberPage(Map<String, Integer> page);
+	ApplicationVo updateView(String ap_num);
 	
-	int insertMember(MemberVo memberVo);
-	
-	int deleteMember(String userid);
-	
-	int updateMember(MemberVo memberVo);
+	int update(ApplicationVo applicationVo);
 }

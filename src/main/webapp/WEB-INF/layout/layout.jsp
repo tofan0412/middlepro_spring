@@ -25,9 +25,9 @@
          <table border="1">
             <tr>
                <td><a href="${pageContext.request.contextPath }/app/write">입사지원서 작성</a></td>
-               <td><a id="update" href="/MiddleProject/ReadMyApp?memId=<%=session.getAttribute("id")%>">입사지원서 조회 및 수정</a></td>
-               <td><a id="select" href="/MiddleProject/ReadMyAppResult?memId=<%=session.getAttribute("id")%>">입사 지원서 결과 조회</a></td>
-               <td><a id="delete" href="/MiddleProject/ReadMyAppDelete?memId=<%=session.getAttribute("id")%>">입사지원서 삭제 / 지원취소</a></td>
+               <td><a href="${pageContext.request.contextPath }/app/listView">입사지원서 조회 및 수정</a></td>
+               <td><a href="#">입사 지원서 결과 조회</a></td>
+               <td><a href="${pageContext.request.contextPath }/app/deleteView">입사지원서 삭제</a></td>
             </tr>
          </table>
       </div>

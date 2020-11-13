@@ -6,6 +6,7 @@
 
   <typeAliases>
   	<typeAlias type="middleproject.member.model.MemberVo" alias="MemberVo"/>
+  	<typeAlias type="middleproject.app.model.ApplicationVo" alias="ApplicationVo"/>
   </typeAliases>
 
   <mappers>

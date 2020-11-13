@@ -3,23 +3,18 @@ package middleproject.member.repository;
 import java.util.List;
 import java.util.Map;
 
+import middleproject.app.model.ApplicationVo;
 import middleproject.member.model.MemberVo;
 
 
 public interface MemberDaoI {
 	MemberVo login(Map<String, String> userInfo);
 	
-	MemberVo getMember(String userId);
+	int insert(ApplicationVo applicationVo);
 	
-	List<MemberVo> getMemberAll();
+	List<ApplicationVo> list(String userid);
 	
-	List<MemberVo> getMemberPage(Map<String, Integer> page);
-
-	int selectMemberTotalCnt();
+	ApplicationVo updateView(String ap_num);
 	
-	int insertMember(MemberVo memberVo);
-	
-	int deleteMember(String userid);
-	
-	int updateMember(MemberVo memberVo);
+	int update(ApplicationVo applicationVo);
 }

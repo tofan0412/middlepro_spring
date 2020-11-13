@@ -49,12 +49,6 @@ label {
 h1 {
 	text-align: center;
 }
-#content table{
-	text-align : center;
-	width : 50%;
-	margin : auto;
-	height : 500px;
-}
 th{
 	background : #779af5;
 	text-align : center;
